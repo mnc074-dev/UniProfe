@@ -276,6 +276,7 @@ body {
     line-height: 1.1;
     font-size: 2.4rem;
     color: var(--color-titulo);
+    
 }
 
 /* Define el subtítulo descriptivo que acompaña al nombre de la plataforma,
@@ -284,8 +285,8 @@ body {
     grid-column: 2;
     grid-row: 2;
     align-self: start;
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 700;
     color: var(--color-primario);
     line-height: 1.2;
 }
@@ -603,7 +604,7 @@ body.modo-oscuro .select-filtro {
        contenido principal y al panel lateral, generando una única banda
        superior continua. */
     .perfil-cabecera-ampliada {
-        grid-column: 2 / 4; /* Ocupa el ancho sumado del main + aside */
+        grid-column: 2 / 4; 
         padding-left: 0;
         padding-right: 0;
     }
@@ -611,7 +612,7 @@ body.modo-oscuro .select-filtro {
     /* Asigna explícitamente el contenido principal a la segunda columna
        de la grilla, manteniendo el alineamiento con la cabecera. */
     .columna-principal {
-        grid-column: 2; /* Va directo a la columna 2 */
+        grid-column: 2; 
         padding-left: 0;
         padding-right: 0;
     }
@@ -620,39 +621,51 @@ body.modo-oscuro .select-filtro {
        La propiedad align-self evita que el panel aumente su altura para
        igualar automáticamente la del contenido principal. */
     .columna-lateral-honorarios {
-        grid-column: 3; /* Va directo a la columna 3 */
-        align-self: start; /* Evita que la caja blanca se estire hacia abajo */
+        grid-column: 3; 
+        align-self: start; 
     }
 }
 
-/* Adapta la interfaz para dispositivos móviles y tablets pequeñas,
-   reorganizando los principales componentes en disposición vertical para
-   mejorar la experiencia de lectura y navegación. */
+/* Adaptaciones para Celulares y Tablets pequeñas */
 @media (max-width: 768px) {
-
-    /* Apila verticalmente los elementos de la cabecera y centra todo el
-       contenido disponible. */
-    .cabecera-principal {
+    
+    .cabecera-principal { 
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
     }
-
-    /* Elimina el margen automático utilizado en escritorio para permitir
-       el centrado completo del logotipo. */
+    
+    /* Transformamos la cuadrícula de la marca en una columna perfectamente centrada */
     .marca {
-        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        margin-right: 0; 
     }
 
-    /* Reorganiza verticalmente la fotografía y la información del profesor,
-       mejorando la visualización en pantallas reducidas. */
+    /* Reseteamos las alineaciones heredadas de la PC y manejamos las separaciones */
+    .logo-icono {
+        align-self: center; 
+        margin-bottom: 0.2rem; 
+    }
+
+    .logo-texto {
+        align-self: center; 
+        margin-bottom: 0.8rem; 
+        text-align: center;
+    }
+
+    .logo-subtitulo {
+        align-self: center; 
+        text-align: center;
+    }
+    
+    /* Centrado del perfil del docente */
     .perfil-cabecera-ampliada {
         flex-direction: column;
         text-align: center;
     }
-
-    /* Centra el contenido del título principal cuando los elementos pasan
-       a mostrarse en una única columna. */
+    
     .perfil-titulo-principal {
         justify-content: center;
     }
