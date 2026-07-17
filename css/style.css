@@ -44,6 +44,12 @@ body.modo-oscuro .logo-texto {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
+/* Cambia el color del logo a blanco en modo oscuro*/
+body.modo-oscuro .logo-icono {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
 /* Reinicia los márgenes y rellenos predeterminados del navegador y utiliza
    el modelo de cajas border-box para simplificar el cálculo de tamaños. */
 *, *::before, *::after {
@@ -262,10 +268,9 @@ body {
 .logo-icono {
     grid-column: 1;
     grid-row: 1 / span 2;
-    font-size: 3.2rem;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--color-primario);
+    align-self: center; 
+    width: 55px; 
+    height: auto; 
 }
 
 /* Configura el nombre principal de la marca dentro del logotipo. */
@@ -567,6 +572,12 @@ body.modo-oscuro .select-filtro {
 /* ==========================================================================
    08. DISEÑO RESPONSIVE 
    ========================================================================== */
+/* ORDEN VISUAL PARA CELULARES (Mobile First) */
+.cabecera-principal { order: 1; }
+.perfil-cabecera-ampliada { order: 2; }
+.columna-lateral-honorarios { order: 3; } /* El formulario sube */
+.columna-principal { order: 4; } /* 'Sobre mí' baja */
+.pie-pagina { order: 5; }
 
 /* Reorganiza completamente la estructura del sitio para pantallas grandes
    utilizando CSS Grid como contenedor principal de toda la página.
@@ -624,7 +635,25 @@ body.modo-oscuro .select-filtro {
         grid-column: 3; 
         align-self: start; 
     }
+
+    /* Posiciona el panel lateral dentro de la tercera columna de la grilla.
+       La propiedad align-self evita que el panel aumente su altura para
+       igualar automáticamente la del contenido principal. */
+    .columna-lateral-honorarios {
+        grid-column: 3; 
+        align-self: start; 
+    }
+
+    /* Restaura el orden original para no afectar la grilla de escritorio */
+    .cabecera-principal,
+    .perfil-cabecera-ampliada,
+    .columna-principal,
+    .columna-lateral-honorarios,
+    .pie-pagina {
+        order: 0; 
+    }
 }
+
 
 /* Adaptaciones para Celulares y Tablets pequeñas */
 @media (max-width: 768px) {
